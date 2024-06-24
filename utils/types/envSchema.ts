@@ -20,4 +20,5 @@ if (!envServer.success) {
     throw new Error("There is an error with the server environment variables");
 }
 
+export const isDevelopment = process.env.NODE_ENV === "development";
 export type EnvSchemaType = z.infer<typeof envSchema>;

@@ -1,5 +1,6 @@
 import { eventListSchema } from "@/utils/types/eventSchema";
 import { getScheduleEvents } from "@/utils/format-event";
+import { isDevelopment } from "@/utils/types/envSchema";
 
 export const getUFCEvents = defineCachedFunction(
     async () => {
@@ -20,7 +21,7 @@ export const getUFCEvents = defineCachedFunction(
         }
     },
     {
-        base: process.env.NODE_ENV === "development" ? "events" : "cache",
+        base: isDevelopment ? "events" : "cache",
         name: "getUFCEvents",
         getKey: () => "events",
         shouldBypassCache: () => false,
