@@ -1,11 +1,13 @@
 <script setup lang="ts">
 const { data: events } = await useFetch("/api/events");
+const title = "UFC events in 2024";
 useSeoMeta({
-    title: "UFC events",
+    title,
 });
 </script>
 
 <template>
+    <h1>{{ title }}</h1>
     <div>
         <h2>Past Events</h2>
         <ul>
