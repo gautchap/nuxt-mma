@@ -16,9 +16,9 @@ const fights = event.competitions.toReversed();
         <ul>
             <li v-for="fight in fights">
                 <div class="flex">
-                    <p>{{ fight.competitors[0].athlete.fullName }} <b v-if="fight.competitors[0].winner">W</b></p>
+                    <Fighter :fighter="fight.competitors[0]" />
                     <p>vs</p>
-                    <p>{{ fight.competitors[1].athlete.fullName }} <b v-if="fight.competitors[1].winner">W</b></p>
+                    <Fighter :fighter="fight.competitors[1]" />
                 </div>
             </li>
         </ul>

@@ -1,5 +1,13 @@
 import { z } from "zod";
 
+const fighterSchema = z.object({
+    id: z.string(),
+    winner: z.boolean(),
+    athlete: z.object({
+        fullName: z.string(),
+    }),
+});
+
 export const eventSchema = z.object({
     id: z.string(),
     date: z.string(),
@@ -13,15 +21,7 @@ export const eventSchema = z.object({
                     abbreviation: z.string(),
                 })
                 .optional(),
-            competitors: z.array(
-                z.object({
-                    id: z.string(),
-                    winner: z.boolean(),
-                    athlete: z.object({
-                        fullName: z.string(),
-                    }),
-                })
-            ),
+            competitors: z.array(fighterSchema),
             status: z.object({
                 displayClock: z.string(),
                 period: z.coerce.number(),
@@ -48,5 +48,6 @@ export const eventSchema = z.object({
 
 export const eventListSchema = z.array(eventSchema);
 
+export type FighterType = z.infer<typeof fighterSchema>;
 export type EventType = z.infer<typeof eventSchema>;
 export type EventListType = z.infer<typeof eventListSchema>;
