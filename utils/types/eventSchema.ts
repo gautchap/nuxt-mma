@@ -5,6 +5,10 @@ const fighterSchema = z.object({
     winner: z.boolean(),
     athlete: z.object({
         fullName: z.string(),
+        flag: z.object({
+            href: z.string().url(),
+            alt: z.string(),
+        }),
     }),
 });
 
@@ -16,6 +20,7 @@ export const eventSchema = z.object({
     competitions: z.array(
         z.object({
             id: z.string(),
+            date: z.string(),
             type: z
                 .object({
                     abbreviation: z.string(),
@@ -25,6 +30,9 @@ export const eventSchema = z.object({
             status: z.object({
                 displayClock: z.string(),
                 period: z.coerce.number(),
+                type: z.object({
+                    completed: z.boolean(),
+                }),
             }),
             format: z.object({
                 regulation: z.object({
