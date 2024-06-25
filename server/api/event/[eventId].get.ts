@@ -2,7 +2,7 @@ import { getUFCEventById } from "@/utils/events";
 import { isEventLive } from "@/utils/format-event";
 import { isDevelopment } from "@/utils/types/envSchema";
 
-export default defineCachedEventHandler(async (event) => {
+export default defineEventHandler(async (event) => {
     const id = event.context.params?.eventId;
     if (!id) return null;
     const ufcEvent = await getUFCEventById(id);
