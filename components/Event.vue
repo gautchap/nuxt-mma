@@ -5,7 +5,6 @@ const { event } = defineProps<{
 }>();
 
 const eventDate = new Date(event.date).toLocaleDateString("fr-FR");
-
 const fights = event.competitions.toReversed();
 </script>
 
@@ -20,12 +19,19 @@ const fights = event.competitions.toReversed();
                     <p>vs</p>
                     <Fighter :fighter="fight.competitors[1]" />
                 </div>
+                <p v-if="fight.status.type.completed" class="round">
+                    R {{ fight.status.period }} {{ fight.status.displayClock }}
+                </p>
             </li>
         </ul>
     </div>
 </template>
 
 <style scoped>
+.round {
+    color: green;
+}
+
 .flex {
     display: flex;
     gap: 3px;
