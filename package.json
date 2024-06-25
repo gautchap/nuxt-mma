@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.7.0",
+    "@nuxtjs/tailwindcss": "^6.12.0",
     "nuxt": "^3.12.2",
     "ufo": "^1.5.3",
     "vue": "^3.4.29",
