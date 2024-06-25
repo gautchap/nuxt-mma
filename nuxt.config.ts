@@ -8,9 +8,7 @@ export default defineNuxtConfig({
             },
         },
     },
-
     devtools: { enabled: true },
-
     $production: {
         nitro: {
             storage: {
@@ -31,6 +29,5 @@ export default defineNuxtConfig({
             },
         },
     },
-
-    modules: ["@nuxt/image", "@nuxtjs/tailwindcss"],
+    modules: ["@nuxt/image", "@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
 });
