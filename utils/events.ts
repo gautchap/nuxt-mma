@@ -4,7 +4,8 @@ import { isDevelopment } from "@/utils/types/envSchema";
 
 export const getUFCEvents = defineCachedFunction(
     async () => {
-        const events = await $fetch(`${process.env.API_URL}/scoreboard?year=2024&league=ufc`, {
+        const year = new Date().getFullYear();
+        const events = await $fetch(`${process.env.API_URL}/scoreboard?year=${year}&league=ufc`, {
             headers: {
                 "x-rapidapi-key": process.env.API_KEY,
                 "x-rapidapi-host": process.env.API_HOST,
@@ -25,7 +26,7 @@ export const getUFCEvents = defineCachedFunction(
         name: "getUFCEvents",
         getKey: () => "events",
         shouldBypassCache: () => false,
-        maxAge: 1000 * 60 * 60 * 24,
+        maxAge: 60 * 60 * 24,
     }
 );
 
