@@ -39,6 +39,8 @@ export function getFormatEvent(events: EventListType) {
         }
     }
 
+    pastEvents.reverse();
+
     return { futurEvents, pastEvents };
 }
 
