@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/image": "^1.7.0",
     "nuxt": "^3.12.2",
+    "ufo": "^1.5.3",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

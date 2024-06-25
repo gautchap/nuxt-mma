@@ -1,6 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    image: {
+        providers: {
+            espn: {
+                provider: "@/providers/espn.ts",
+                options: { baseURL: "https://a.espncdn.com/i/headshots/mma/players/full/" },
+            },
+        },
+    },
+
     devtools: { enabled: true },
+
     $production: {
         nitro: {
             storage: {
@@ -21,4 +31,6 @@ export default defineNuxtConfig({
             },
         },
     },
+
+    modules: ["@nuxt/image"],
 });
