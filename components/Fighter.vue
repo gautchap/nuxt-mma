@@ -3,13 +3,14 @@ import type { FighterType } from "@/utils/types/eventSchema";
 
 const props = defineProps<{
     fighter: FighterType;
+    position: "left" | "right";
 }>();
 </script>
 
 <template>
-    <div class="card">
-        <div class="card-header">
-            <p class="card-title">{{ props.fighter.athlete.fullName }}</p>
+    <div class="flex flex-col" :class="position === 'left' ? 'items-start' : 'items-end'">
+        <div class="flex items-center justify-center">
+            <p>{{ props.fighter.athlete.fullName }}</p>
             <NuxtImg
                 :src="props.fighter.athlete.flag.href"
                 :alt="props.fighter.athlete.flag.alt"
@@ -17,36 +18,9 @@ const props = defineProps<{
                 height="24"
             />
         </div>
-        <NuxtImg
-            class="profile"
-            :class="props.fighter.winner ? 'winner' : ''"
-            provider="espn"
-            :src="`/${props.fighter.id}.png`"
-            :alt="props.fighter.athlete.fullName"
-            width="132.11"
-            height="96"
-        />
+        <div class="text-center">
+            <FighterImg :fighter="props.fighter" />
+            <p>{{ fighter.records![0].summary }}</p>
+        </div>
     </div>
 </template>
-
-<style scoped>
-.card-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-}
-
-.winner {
-    border: 2px solid green;
-}
-.profile {
-    width: 8em;
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
