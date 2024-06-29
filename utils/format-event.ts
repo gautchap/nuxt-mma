@@ -49,7 +49,7 @@ export function isEventLive(event: EventType) {
     const eventDateEnd = new Date(eventDateStart);
     const now = new Date();
 
-    eventDateEnd.setHours(eventDateEnd.getHours() + 5);
+    eventDateEnd.setMinutes(eventDateEnd.getMinutes() + event.competitions.length * 30);
 
     if (eventDateStart < now && now < eventDateEnd) {
         return true;
